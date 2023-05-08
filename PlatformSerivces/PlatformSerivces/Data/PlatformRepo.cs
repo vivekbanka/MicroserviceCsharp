@@ -12,7 +12,7 @@ namespace PlatformSerivces.Data
         }
         void IPlatformRepo.CreatePlatform(Platform platform)
         {
-            if (platform != null)
+            if (platform == null)
             {
                 throw new ArgumentException(nameof(platform));
             }
