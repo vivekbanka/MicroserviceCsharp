@@ -12,7 +12,15 @@ namespace PlatformSerivces.Data
         }
         void IPlatformRepo.CreatePlatform(Platform platform)
         {
-            throw new NotImplementedException();
+            if (platform != null)
+            {
+                throw new ArgumentException(nameof(platform));
+            }
+            else
+            {
+                _context.Platforms.Add(platform);
+                
+            }
         }
 
         IEnumerable<Platform> IPlatformRepo.GetAllPlatforms()
@@ -22,7 +30,7 @@ namespace PlatformSerivces.Data
 
         Platform IPlatformRepo.GetPlatformById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Platforms.FirstOrDefault(x => x.Id == id);
         }
 
         bool IPlatformRepo.savechanges()
